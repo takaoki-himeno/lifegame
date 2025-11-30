@@ -9,8 +9,8 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@mui/system": "^7.3.5",
     "jotai": "^2.15.1",
-    "mui": "^0.0.1",
     "next": "16.0.0",
     "react": "19.2.0",
     "react-dom": "19.2.0"
