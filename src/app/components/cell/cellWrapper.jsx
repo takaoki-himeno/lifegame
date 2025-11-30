@@ -1,4 +1,5 @@
 'use client'
+import { memo } from 'react'
 import Cell from './cell'
 import { styled } from '@mui/system'
 
@@ -6,19 +7,10 @@ const FlexDiv = styled('div')({
   display: 'flex',
 })
 
-const SIZE = {
-  ROWS: 50,
-  COLS: 50,
-}
-
-const masterStatus = Array(SIZE.ROWS)
-  .fill()
-  .map(() => Array(SIZE.COLS).fill(false))
-
-export default function CellWrapper() {
+function CellWrapper({ status, clickHandlerCell }) {
   return (
     <>
-      {masterStatus.map((row, rowIndex) => (
+      {status.map((row, rowIndex) => (
         <FlexDiv key={rowIndex}>
           {row.map((cellStatus, colIndex) => (
             <Cell
@@ -26,6 +18,7 @@ export default function CellWrapper() {
               row={rowIndex}
               col={colIndex}
               status={cellStatus}
+              clickHandlerCell={clickHandlerCell}
             />
           ))}
         </FlexDiv>
@@ -33,3 +26,5 @@ export default function CellWrapper() {
     </>
   )
 }
+
+export default memo(CellWrapper)

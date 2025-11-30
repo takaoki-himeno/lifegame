@@ -1,22 +1,20 @@
 'use client'
 import { styled } from '@mui/system'
-import { useState, useCallback } from 'react'
+import { memo, useCallback } from 'react'
 
 const StyledCell = styled('div')(({ status }) => {
   return {
-    width: '10px',
-    height: '10px',
+    width: '15px',
+    height: '15px',
     border: '1px solid #ccc',
     backgroundColor: status ? '#000' : '#fff' ,
   }
 })
 
-export default function Cell(props) {
-  const [status, setStatus] = useState(props.initialStatus || 0)
-
+function Cell({ status, row, col, clickHandlerCell }) {
   const handleClick = useCallback(() => {
-    setStatus(currentStatus => !currentStatus)
-  }, [])
+    clickHandlerCell(row, col)
+  }, [row, col, clickHandlerCell, status])
 
   return (
     <>
@@ -24,3 +22,5 @@ export default function Cell(props) {
     </>
   )
 }
+
+export default memo(Cell)

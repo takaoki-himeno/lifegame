@@ -1,10 +1,10 @@
 'use client'
 import { styled } from '@mui/system'
 
-export default function Play() {
+export default function Play({ clickHandlerPlay, isPlaying }) {
   return (
     <>
-        <button>Play</button>
+        <button onClick={ clickHandlerPlay }>{ isPlaying ? 'Stop' : 'Play' }</button>
     </>
   )
 }

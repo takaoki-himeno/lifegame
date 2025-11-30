@@ -5,15 +5,16 @@ import { styled } from '@mui/system'
 
 const FlexDiv = styled('div')({
   display: 'flex',
+  justifyContent: 'center',
 })
 
 
-export default function ButtonWrapper() {
+export default function ButtonWrapper({ clickHandlerPlay, clickHandlerClear, isPlaying, ...props }) {
   return (
     <>
-        <FlexDiv>
-            <Play />
-            <Clear />
+        <FlexDiv {...props}>
+            <Play clickHandlerPlay={ clickHandlerPlay } isPlaying={ isPlaying } />
+            <Clear clickHandlerClear={ clickHandlerClear }/>
         </FlexDiv>
     </>
   )

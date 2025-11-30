@@ -1,12 +1,12 @@
 'use client'
-import CellWrapper from './components/cell/cellWrapper'
-import ButtonWrapper from './components/buttons/buttonWrapper'
+import App from './components/app'
+// import App from './components/geminiSample'
 
 export default function Home() {
+
   return (
     <>
-      <CellWrapper />
-      <ButtonWrapper />
+      <App />
     </>
   )
 }
