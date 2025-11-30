@@ -8,7 +8,7 @@ const GenerationWrapper = styled('div')(({ status }) => {
   }
 })
 
-function GenerationDisplay({ generation }) {
+export default function GenerationDisplay({ generation }) {
 
   return (
     <>
@@ -18,5 +18,3 @@ function GenerationDisplay({ generation }) {
     </>
   )
 }
-
-export default memo(GenerationDisplay)

@@ -7,7 +7,7 @@ const FlexDiv = styled('div')({
   display: 'flex',
 })
 
-function CellWrapper({ status, clickHandlerCell }) {
+export default function CellWrapper({ status, clickHandlerCell }) {
   return (
     <>
       {status.map((row, rowIndex) => (
@@ -26,5 +26,3 @@ function CellWrapper({ status, clickHandlerCell }) {
     </>
   )
 }
-
-export default memo(CellWrapper)

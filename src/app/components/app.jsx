@@ -6,8 +6,8 @@ import { useCallback, useRef, useState } from 'react'
 import { styled } from '@mui/system'
 
 const SIZE = {
-  ROWS: 20,
-  COLS: 40,
+  ROWS: 30,
+  COLS: 30,
 }
 
 const getInitialStatus = () => Array(SIZE.ROWS)
@@ -67,7 +67,7 @@ export default function App() {
 		}	
 	}, [getInitialStatus, setCurrentStatus])
 	
-		// Play 押された
+	// Play 押された
 	const clickHandlerPlay = useCallback(() => {
 		if (isPlaying) {
 			setIsPlaying(false)
@@ -85,6 +85,20 @@ export default function App() {
 		setCurrentStatus((prevStatus) => calcutateNextStatus(prevStatus))
 	}, [isPlaying, currentStatus, setIsPlaying, setCurrentStatus])
 
+	// random 押された
+	const clickHandlerRandom = useCallback(() => {
+		if (isPlaying) return
+		const getRandomInitialStatus = () => Array(SIZE.ROWS)
+			.fill()
+			.map(() => 
+				Array(SIZE.COLS)
+					.fill()
+					.map(() => Math.random() > 0.7)
+			)
+		setCurrentStatus(getRandomInitialStatus())
+		generationRef.current = 0
+	}, [setCurrentStatus])
+
 	// セルがクリックされた
 	const clickHandlerCell = useCallback((row, col) => {
 		const tempStatus = currentStatus.slice()
@@ -97,7 +111,7 @@ export default function App() {
 	return (
 		<>
 			<CellWrapper status={ currentStatus } clickHandlerCell={ clickHandlerCell } />
-			<StyledButtonWrapper clickHandlerClear={ clickHandlerClear } clickHandlerPlay={ clickHandlerPlay } isPlaying={ isPlaying } />
+			<StyledButtonWrapper clickHandlerClear={ clickHandlerClear } clickHandlerPlay={ clickHandlerPlay } clickHandlerRandom={ clickHandlerRandom } isPlaying={ isPlaying } />
 			<GenerationDisplay generation={ generationRef.current } />
 		</>
 	)
