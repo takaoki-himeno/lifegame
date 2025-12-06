@@ -6,8 +6,8 @@ import { useCallback, useRef, useState } from 'react'
 import { styled } from '@mui/system'
 
 const SIZE = {
-  ROWS: 30,
-  COLS: 30,
+  ROWS: 50,
+  COLS: 100,
 }
 
 const getInitialStatus = () => Array(SIZE.ROWS)
